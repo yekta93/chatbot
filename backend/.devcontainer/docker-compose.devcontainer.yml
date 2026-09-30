@@ -1,0 +1,36 @@
+name: danayar-back-${USER}
+
+include:
+  - ../../compose.common.yml
+
+services:
+  front:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+
+  back:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+
+    command: sleep infinity
+
+    environment:
+      - CHAINLIT_AUTH_SECRET="abcdefghijklmnop"
+      - CHAINLIT_CUSTOM_AUTH=true
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LOG_LEVEL=10
+      - LLAMA_CLOUD_API_KEY=${LLAMA_CLOUD_API_KEY}
+
+    volumes:
+      - ../..:/workspaces:cached
+      - ~/.ssh:/home/vscode/.ssh
+      - dev_cache:/home/vscode/.cache/
+
+    depends_on:
+      - initialization
+
+volumes:
+  dev_cache:
+    driver: local

@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "danayar-backend"
+version = "0.1.0"
+description = ""
+authors = ["Muhammad Reza Fatehinia <fatehinia@amnafzar.ir>"]
+readme = "README.md"
+packages = [{include = "danayar", from = "src"}]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+chainlit = "^2.0.3"
+beanie = "~1.27.0"
+minio = "^7.2.13"
+pandas = "^2.2.3"
+pillow = "^11.0.0"
+phonenumbers = "^8.13.52"
+plotly = "^5.24.1"
+langchain = "^0.3.13"
+langchain-community = "^0.3.13"
+langchain-openai = "^0.2.14"
+langchain-chroma = "^0.1.4"
+langgraph = "^0.2.60"
+fastapi = {extras = ["standard"], version = "^0.115.6"}
+psycopg = {extras = ["binary"], version = "^3.2.3"}
+pydantic = "~2.9"
+llama-parse = "^0.5.19"
+chromadb-client = "^0.6.2"
+asyncpg = "^0.30.0"
+sqlalchemy = "^2.0.38"
+jdatetime = "^5.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

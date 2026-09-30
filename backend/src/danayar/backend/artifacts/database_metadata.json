@@ -1,0 +1,21 @@
+{
+    "supermarket_sales": {
+        "Invoice ID": "Unique identifier for the invoice.",
+        "Branch": "Name of the branch where the sale occurred.",
+        "Province": "Geographic region of the branch.",
+        "Customer type": "Classification of the customer as either a member or a regular.",
+        "Gender": "Gender of the customer, either male or female.",
+        "Product line": "Category of the product sold.",
+        "Unit price": "Price of a single unit of the product (in تومان).",
+        "Quantity": "Number of units purchased.",
+        "Tax 5%": "Amount of tax applied at 5% of the subtotal (in تومان).",
+        "Total": "Total amount charged for the invoice (in تومان).",
+        "Date": "Date of the transaction (in DD/MM/YYYY format).",
+        "Time": "Time of the transaction (in HH:MM format).",
+        "Payment": "Method of payment used for the transaction.",
+        "cogs": "Cost of goods sold for the transaction (in تومان).",
+        "gross margin percentage": "Percentage representing the gross margin relative to total sales.",
+        "gross income": "Total income generated from the transaction (in تومان).",
+        "Rating": "Customer satisfaction rating for the transaction (out of 10)."
+    }
+}
