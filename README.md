@@ -1,4 +1,4 @@
-# Danayar
+# ChatBot
 
 # To use Ollama 
 ```
