@@ -1,0 +1,44 @@
+
+
+services:
+  mongodb:
+    extends:
+      file: ../../compose.common.yml
+      service: mongodb
+
+  chromadb:
+    extends:
+      file: ../../compose.common.yml
+      service: chromadb
+
+  minio:
+    extends:
+      file: ../../compose.common.yml
+      service: minio
+
+  postgresql:
+    extends:
+      file: ../../compose.common.yml
+      service: postgresql
+
+  ollama:
+    extends:
+      file: ../../compose.common.yml
+      service: ollama
+
+
+volumes:
+  mongodb_data:
+    driver: local
+
+  minio_data:
+    driver: local
+
+  postgresql_data:
+    driver: local
+
+  chroma_data:
+    driver: local
+
+  ollama_data:
+    driver: local

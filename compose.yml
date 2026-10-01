@@ -1,0 +1,27 @@
+include:
+  - ./compose.common.yml
+
+services:
+  back:
+      build: 
+        context: ./backend
+        dockerfile: ./backend/Dockerfile
+
+      depends_on:
+      - mongodb
+      - minio
+      - postgresql
+      - initialization
+        
+      environment:
+        - CHAINLIT_AUTH_SECRET="abcdefghijklmnop"
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+        - LOG_LEVEL=10
+        - LLAMA_CLOUD_API_KEY=${LLAMA_CLOUD_API_KEY}
+
+  front:
+    build: 
+      context: ./frontend
+      dockerfile: ./frontend/Dockerfile
+
+#TODO: this file is not tested yet, it is just a draft, it should be tested and fixed as soon as possible

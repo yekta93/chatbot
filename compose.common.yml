@@ -1,0 +1,92 @@
+services:
+  mongodb:
+    image: docker.arvancloud.ir/bitnami/mongodb:8.0
+    restart: always
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+    environment:
+      - MONGODB_ROOT_PASSWORD=abc
+      - MONGODB_PASSWORD=abc
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  minio:
+    image: docker.arvancloud.ir/bitnami/minio:2024.5.7-debian-12-r0
+    environment:
+      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_PASSWORD=minio12345678
+    volumes:
+      - 'minio_data:/bitnami/minio/data'
+    healthcheck:
+      test: timeout 5s bash -c ':> /dev/tcp/127.0.0.1/9000' || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: always
+
+  postgresql:
+    image: docker.arvancloud.ir/bitnami/postgresql:17
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+    environment:
+      - 'ALLOW_EMPTY_PASSWORD=yes'
+      - 'POSTGRESQL_USERNAME=postgres'
+      - 'POSTGRESQL_POSTGRES_PASSWORD=postgres123'
+    restart: always
+    healthcheck:
+        test: ["CMD", "pg_isready", "-U", "postgres"]
+        interval: 10s
+        timeout: 5s
+        retries: 3
+        start_period: 30s
+
+  chromadb:
+    image: docker.arvancloud.ir/chromadb/chroma:0.6.1
+    volumes:
+      - chroma_data:/index_data
+
+  ollama:
+    image: docker.arvancloud.ir/ollama/ollama:0.6.1
+
+    volumes:
+      - ollama_data:/root/.ollama
+
+
+  initialization:
+    build: 
+      context: .
+      dockerfile: initialization/Dockerfile
+      
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+
+    depends_on:
+      - mongodb
+      - minio
+      - postgresql
+      - ollama
+
+
+      
+      
+
+volumes:
+  mongodb_data:
+    driver: local
+
+  minio_data:
+    driver: local
+
+  postgresql_data:
+    driver: local
+
+  chroma_data:
+    driver: local
+
+  ollama_data:
+    driver: local

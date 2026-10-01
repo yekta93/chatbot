@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'vazir-base';
+    scrollbar-width: thin;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 174, 62%, 47%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --md-outlined-text-field-input-text-font: 'vazir-base' !important;
+    --md-filed-text-field-input-text-font: 'vazir-base' !important;
+    --md-outlined-text-field-label-text-font: 'vazir-base' !important;
+    --md-filed-text-field-label-text-font: 'vazir-base' !important;
+    --md-text-button-label-text-font: 'vazir-base' !important;
+    --md-outlined-button-label-text-font: 'vazir-base' !important;
+    --md-filled-tonal-button-label-text-font: 'vazir-base' !important;
+    --md-filled-button-label-text-font: 'vazir-base' !important;
+    --md-elevated-button-label-text-font: 'vazir-base' !important;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "vazir-light";
+    src: url("/fonts/Vazir-Light.ttf");
+  }
+  @font-face {
+    font-family: "vazir-base";
+    src: url("/fonts/Vazir.ttf");
+  }
+  @font-face {
+    font-family: "vazir-medium";
+    src: url("/fonts/Vazir-Medium.ttf");
+  }
+  @font-face {
+    font-family: "vazir-bold";
+    src: url("/fonts/Vazir-Bold.ttf");
+  }
+}
+.vazir-light {
+  font-family: "vazir-light";
+}
+.vazir-base {
+  font-family: "vazir-base";
+}
+.vazir-medium {
+  font-family: "vazir-medium";
+}
+.vazir-bold {
+  font-family: "vazir-bold";
+}
+
+.vertical-flip {
+  transform: rotateY(180deg);
+}
+
+.menu__popover-shadow {
+  filter: drop-shadow(0px 1px 5px rgba(43, 49, 50, 0.35));
+}

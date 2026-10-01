@@ -1,0 +1,25 @@
+name: danayar-initialization-{$USER}
+
+include:
+    - docker-compose.selected.yml
+
+services:
+  initialization:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+
+    command: sleep infinity
+
+    volumes:
+      - ../..:/workspaces:cached
+      - ~/.ssh:/home/vscode/.ssh
+      - dev_cache:/home/vscode/.cache/
+
+volumes:
+  dev_cache:
+    driver: local
